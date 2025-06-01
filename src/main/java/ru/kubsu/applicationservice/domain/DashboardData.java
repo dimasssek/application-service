@@ -16,5 +16,4 @@ public class DashboardData {
     private int approvalCount;
     private LocalDateTime approvalTime;
     private Duration averageProcessingTime;
-    private LocalDateTime lastUpdate;
 }
