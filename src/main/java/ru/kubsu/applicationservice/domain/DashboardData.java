@@ -13,6 +13,8 @@ public class DashboardData {
 
     private int applicationsCount;
     private double approvalRate;
+    private int approvalCount;
+    private LocalDateTime approvalTime;
     private Duration averageProcessingTime;
     private LocalDateTime lastUpdate;
 }
