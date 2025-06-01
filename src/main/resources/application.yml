@@ -1,1 +1,39 @@
-spring.application.name=application-service
+spring:
+  application:
+    name: attendance-service
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        time_zone: UTC
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+  #    show-sql: true
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/application-service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force-response: true
+      force: true
+
+logging:
+  level:
+    #    org:
+    #      hibernate:
+    #        type:
+    #          descriptor:
+    #            sql:
+    #              BasicBinder: TRACE
+    #        SQL: DEBUG
+    ROOT: INFO
