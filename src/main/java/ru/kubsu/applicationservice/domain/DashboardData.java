@@ -1,0 +1,18 @@
+package ru.kubsu.applicationservice.domain;
+
+import lombok.*;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class DashboardData {
+
+    private int applicationsCount;
+    private double approvalRate;
+    private Duration averageProcessingTime;
+    private LocalDateTime lastUpdate;
+}
