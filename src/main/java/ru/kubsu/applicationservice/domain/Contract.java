@@ -19,9 +19,7 @@ public class Contract {
     @GeneratedValue
     private UUID id;
 
-    @OneToOne
-    @JoinColumn(name = "application_id", nullable = false)
-    private Application application;
+    private String name;
 
     @Column(nullable = false)
     private String templateType;
@@ -29,6 +27,12 @@ public class Contract {
     @Lob
     @Column(nullable = false)
     private byte[] signedDocument;
+
+    @OneToOne
+    @JoinColumn(name = "application_id", nullable = false)
+    private Application application;
+
+    private LocalDateTime creationDate;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
