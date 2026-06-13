@@ -1,0 +1,28 @@
+# DEPRECATED: use bsps-infra/docker-compose.yml instead.
+# This file is kept for reference only.
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: application-service-postgres
+    ports:
+      - "5489:5432"
+    environment:
+      POSTGRES_DB: application-service
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - application-service-postgres-data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: application-service-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+volumes:
+  application-service-postgres-data:

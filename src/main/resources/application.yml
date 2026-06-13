@@ -1,0 +1,71 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: application-service
+  datasource:
+    url: jdbc:postgresql://localhost:5489/application-service
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+app:
+  rabbit:
+    exchange:
+      client-events: client.events.exchange
+      application-events: application.events.exchange
+    queue:
+      client-events: application.client.events.queue
+    routing-key:
+      client-created: client.created
+      client-updated: client.updated
+      client-deleted: client.deleted
+      application-created: application.created
+      application-updated: application.updated
+      application-product-created: application.product.created
+      application-product-updated: application.product.updated
+      application-profile-change-created: application.profile-change.created
+      application-profile-change-updated: application.profile-change.updated
+      application-service-created: application.service.created
+      application-service-updated: application.service.updated
+      application-document-created: application.document.created
+      application-document-updated: application.document.updated
+      application-claim-created: application.claim.created
+      application-claim-updated: application.claim.updated
+      application-authority-created: application.authority.created
+      application-authority-updated: application.authority.updated
+  feign:
+    client-service:
+      url: http://localhost:8080
+    report-service:
+      url: http://localhost:8083
+  outbox:
+    poll-interval-ms: 5000
+    batch-size: 50
+    max-attempts: 5
+    max-error-length: 2000
+  general-check:
+    pool-size: 4
+    await-termination-seconds: 300
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

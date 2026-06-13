@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-application:5432/application-service
+  rabbitmq:
+    host: rabbitmq
+
+app:
+  feign:
+    client-service:
+      url: http://client-service:8080
+    report-service:
+      url: http://report-service:8083
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p --- [%t] %logger{36} : %m%n"

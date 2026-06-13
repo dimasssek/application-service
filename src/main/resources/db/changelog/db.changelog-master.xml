@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="scripts/v1_create_table_client.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v2_create_table_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v3_create_table_product_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v4_create_table_service_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v5_create_table_profile_change_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v6_create_table_document_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v7_create_table_claim_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v8_create_table_authority_application.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v9_create_table_status_inform.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v10_refill_status_inform.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v11_alter_table_application_add_client_snapshot_and_sequences.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v12_alter_table_application_add_deleted.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v13_create_table_outbox_message.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/v14_create_table_general_check.sql" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

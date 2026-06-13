@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+  task:
+    scheduling:
+      enabled: false
+  rabbitmq:
+    listener:
+      simple:
+        auto-startup: true
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 10000

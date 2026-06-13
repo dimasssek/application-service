@@ -1,31 +1,35 @@
-# Banking Services Processing System (BSPS)
+# application-service
 
-Автоматизированная система обработки заявлений банковских услуг на Java
+Микросервис обработки банковских заявлений (ядро BSPS).
 
-## Описание
-Проект предназначен для автоматизации процессов обработки заявок на кредиты, депозиты и другие банковские услуги. Система обеспечивает:
-- Автоматическую проверку данных клиентов
-- Интеграцию с кредитными бюро (НБКИ, Equifax)
-- Генерацию договоров с электронной подписью
-- Формирование аналитических отчетов
+## Локальный запуск инфраструктуры
 
-## Ключевые возможности
+> **Используйте [bsps-infra](https://github.com/dimasssek/bsps-infra)** — единый `docker compose` для Postgres, RabbitMQ, Grafana/Loki и др.
+> Локальный `docker-compose.yml` в этом репозитории **deprecated**.
 
-- **Прием и валидация заявок**  
-  Поддержка форматов: PDF, JPEG, TXT. Время обработки ≤5 мин.
+```bash
+cd ../bsps-infra
+docker compose up -d
+```
 
-- **Генерация документов**  
-  Автоматическое заполнение шаблонов договоров (10+ вариантов). Подписание ЭЦП.
+RabbitMQ — общий брокер (порт 5672, UI 15672). Подробнее: `bsps-infra/docs/LOCAL_SETUP.md`.
 
-- **Безопасность и аудит**  
-  Шифрование данных (AES-256), ролевой доступ, журналирование действий.
+Параметры подключения к БД и брокеру — в `src/main/resources/application.yml`.
 
-- **Отчетность**  
-  Ежедневные PDF/XLSX-отчеты по заявкам. Дашборд аналитики в реальном времени.
+## Сборка
 
-## Технологии
+```bash
+./mvnw clean compile
+```
 
-- **Бэкенд**: Java 21, Spring Framework 3.5.0, PostgreSQL, Hibernate, LiquieBase
-- **Интеграция**: REST API, JSON/XML
-- **Безопасность**: OAuth 2.0, JWT, AES-256
-- **Деплой**: Docker, Kubernetes (опционально)
+## Контракты (submodule)
+
+```bash
+git submodule update --init --recursive
+```
+
+Общие DTO, enum-ы и messaging-модели — репозиторий [contracts](https://github.com/dimasssek/contracts.git), директория `src/contracts`.
+
+## Swagger UI
+
+После запуска сервиса: http://localhost:8082/swagger-ui.html
